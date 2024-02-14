@@ -1,7 +1,13 @@
 <?php
-    var_dump(
-        $_GET
-    );
+    require __DIR__.'/functions.php';
+    $password = "";
+
+    if (isset($_GET["passsword-lenght"])) {
+        $lengthPsw = intval($_GET["passsword-lenght"]);
+
+        $password = generaPsw($lengthPsw);
+    }    
+
 ?>
 
 <!DOCTYPE html>
@@ -27,12 +33,20 @@
                 <div class="row">
                     <div class="col">
                         <form action="" method="GET">
-                            <input type="number" name="passsword-lenght" placeholder="Inserisci la lunghezza della password" required>
+                            <input type="number" name="passsword-lenght" placeholder="Inserisci la lunghezza della password" required min="0">
                             <button class="btn">INVIA</button>
                         </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <?php
+                          echo $password;  
+                        ?>
                     </div>
                 </div>
             </div>
         </main>
     </body>
 </html>
+
